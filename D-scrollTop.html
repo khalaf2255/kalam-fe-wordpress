@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll top</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      ._5alaf_scroll_top_icon {
+        position: fixed;
+        bottom: 80px;
+        right: 30px;
+        width: 35px;
+        transition: 0.5s;
+        transform: scale(1) translateY(0px);
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+      }
+      ._5alaf_scroll_top_icon:hover {
+        transform: scale(1.04) translateY(-10px);
+      }
+      .showTopArrow {
+        pointer-events: all !important;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <!-- https://css-loaders.com/3d/ -->
+  <body>
+    <img class="_5alaf_scroll_top_icon" src="https://top-shine.site/wp-content/uploads/2025/05/top-arrow.png" />
+    <script>
+      let mybutton = document.querySelector("._5alaf_scroll_top_icon");
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          mybutton.classList.add("showTopArrow");
+        } else {
+          mybutton.classList.remove("showTopArrow");
+        }
+      };
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      };
+    </script>
+  </body>
+</html>
