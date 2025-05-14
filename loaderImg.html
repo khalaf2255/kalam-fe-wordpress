@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my_loader</title>
+    <style>
+      /*START LOADER CODE*/
+      ._5alaf_my_loader_parent {
+        position: fixed;
+        background-color: #fff;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transition: 4s;
+        top: 0;
+		z-index: 9999
+      }
+      ._5alaf_my_loader_parent.showLoader {
+        opacity: 0;
+      }
+
+      /* HTML: <div class="loader"></div> */
+
+      /*END LOADER CODE*/
+    </style>
+  </head>
+  <body>
+    <!-- START LOADER CODE -->
+    <div class="_5alaf_my_loader_parent">
+      <img
+        class="scroll_top_icon"
+        src="https://topshine-auto.com/5alaf/wp-content/uploads/2025/04/loader.gif"
+      />
+    </div>
+    <!-- START LOADER CODE -->
+
+    <script>
+      
+      let loaderElement = document.querySelector("._5alaf_my_loader_parent");
+      window.addEventListener("load", function () {
+        loaderElement.classList.add("showLoader")
+        setTimeout(() => {
+          loaderElement.style.display = "none";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
+
+
