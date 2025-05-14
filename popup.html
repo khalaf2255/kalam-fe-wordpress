@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup</title>
+    <style>
+      /*START WhatsApp_icon Code*/
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      /* Popup button style */
+      .Popup_button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        transition: 0.5s;
+        transform: scale(1);
+        z-index: 99;
+        cursor: pointer;
+        font-size: 17px;
+      }
+      .Popup_button:hover {
+        transform: scale(1.1);
+      }
+
+      /* Popup body style */
+      .popup_body {
+        position: fixed;
+        top: 0;
+        background-color: #06040490;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transition: 0.5s;
+       display: none;
+      }
+
+      /* Popup close button style */
+      .closePopupBtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+      /* Popup content style */
+      .popup_content {
+    position: relative;
+    background-color: rgb(172 211 30);
+    min-width: 350px;
+    padding: 20px;
+    min-height: 200px;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+      }
+      .popup_content p {
+        font-size: 30px;
+      }
+      /*END Popup Code*/
+    </style>
+  </head>
+  <body>
+    <!-- START Popup  -->
+    <button class="Popup_button">Offers</button>
+    <div class="popup_body">
+      <div class="popup_content">
+        <div class="closePopupBtn">❌</div>
+        <p>you can get Offer's today</p>
+      </div>
+    </div>
+    <!-- END Popup  -->
+
+    <script>
+      window.onload = function () {
+        // Variables
+        let Popup_button = document.querySelectorAll(".Popup_button, .Popup_button2");
+        let closePopupBtn = document.querySelector(".closePopupBtn");
+        let popup_body = document.querySelector(".popup_body");
+
+        // Open popup
+        Popup_button.forEach((btn) => {
+          btn.onclick = function () {
+            popup_body.style.opacity = 1;
+            setTimeout(() => {
+              popup_body.style.display = "flex";
+            }, 550);
+          };
+        });
+
+        // Close popup
+        closePopupBtn.onclick = function () {
+          popup_body.style.opacity = 0;
+          setTimeout(() => {
+            popup_body.style.display = "none";
+          }, 550);
+        };
+      };
+    </script>
+  </body>
+</html>
