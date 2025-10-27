@@ -1,0 +1,24 @@
+<style>
+	#movingImage {
+		position: fixed; 
+		z-index: 9999;
+		transform: translate(-50%, -50%); 
+		width: 100px;
+		height: 100px;
+		transition: transform 0.05s ease-out; 
+		pointer-events: none;
+		opacity: .2;
+	}
+</style >
+
+<body>
+	<img id="movingImage" src="https://lightsalmon-chinchilla-175617.hostingersite.com/wplevel2/wp-content/uploads/2025/01/Graphic-1.svg" alt="صورة متحركة">
+
+	<script>
+		const movingImage = document.getElementById('movingImage');
+		document.addEventListener('mousemove', (e) => {
+			movingImage.style.left = e.clientX + 'px';
+			movingImage.style.top = e.clientY + 'px';
+		});
+	</script>
+</body>
