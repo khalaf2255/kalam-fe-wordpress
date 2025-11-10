@@ -1,0 +1,23 @@
+<style>
+	.top-progress {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 6px;
+		background: linear-gradient(90deg, #06b6d4, #7c3aed);
+		z-index: 9999;
+		transition: width 0.1s linear;
+		z-index: 999999;
+	}
+</style>
+<div class="top-progress" id="topProgress"></div>
+<script>
+	const bar = document.getElementById("topProgress");
+	window.addEventListener("scroll", () => {
+		const st = window.scrollY;
+		const sh = document.body.scrollHeight - window.innerHeight;
+		const p = (st / sh) * 100;
+		bar.style.width = p + "%";
+	});
+</script>

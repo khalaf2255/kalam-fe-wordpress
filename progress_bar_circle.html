@@ -1,0 +1,75 @@
+<style>
+	.circle-progress {
+		position: fixed;
+		bottom: 20px;
+		left: 20px;
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		background: #82FF1F;
+		backdrop-filter: blur(6px);
+		box-shadow: 0 0 10px rgba(15, 14, 14, 0.1);
+		z-index: 99;
+	}
+	svg {
+		transform: rotate(-90deg);
+	}
+	circle {
+		fill: none;
+		stroke-width: 6;
+		stroke-linecap: round;
+	}
+	.bg {
+		stroke: #eee;
+	}
+	.fg {
+		stroke: url(#grad);
+		transition: stroke-dashoffset 0.1s linear;
+	}
+	.label {
+		position: absolute;
+		font-size: 13px;
+		color: #000 !important;
+		font-weight: 600;
+	}
+</style>
+<body>
+	<div class="circle-progress">
+		<svg width="70" height="70" viewBox="0 0 100 100">
+			<defs>
+				<linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+					<stop offset="0%" stop-color="#06b6d4" />
+					<stop offset="100%" stop-color="#7c3aed" />
+				</linearGradient>
+			</defs>
+			<circle class="bg" cx="50" cy="50" r="40"></circle>
+			<circle
+					class="fg"
+					id="fgCircle"
+					cx="50"
+					cy="50"
+					r="40"
+					stroke-dasharray="251.2"
+					stroke-dashoffset="251.2"
+					></circle>
+		</svg>
+		<div class="label" id="label">0%</div>
+	</div>
+	<script>
+		const fg = document.getElementById("fgCircle");
+		const label = document.getElementById("label");
+		const CIRC = 2 * Math.PI * 40;
+		function update() {
+			const st = window.scrollY || window.pageYOffset;
+			const sh = document.body.scrollHeight - window.innerHeight;
+			const ratio = Math.min(Math.max(st / sh, 0), 1);
+			const offset = CIRC * (1 - ratio);
+			fg.style.strokeDashoffset = offset;
+			label.textContent = Math.round(ratio * 100) + "%";
+		}
+		window.addEventListener("scroll", update, { passive: true });
+		update();
+	</script>
+</body>
