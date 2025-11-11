@@ -1,0 +1,38 @@
+<style>#typing {height: 50px}</style>
+<h2 id="typing"> </h2>
+  <script>
+    const texts = [
+      "Progress Bar with Scroll",
+      "Preloader Animation",
+      "Typing Text Effect",
+      "HTML • CSS • JS Projects"
+    ];
+    const el = document.getElementById("typing");
+    let txtIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function type() {
+      const current = texts[txtIndex];
+      const speed = deleting ? 50 : 100;
+
+      if (!deleting && charIndex <= current.length) {
+        el.textContent = current.substring(0, charIndex++);
+      } else if (deleting && charIndex > 0) {
+        el.textContent = current.substring(0, --charIndex);
+      } else {
+        if (!deleting) {
+          deleting = true;
+          setTimeout(() => requestAnimationFrame(type), 2000); // wait before delete
+          return;
+        } else {
+          deleting = false;
+          txtIndex = (txtIndex + 1) % texts.length;
+        }
+      }
+      setTimeout(() => requestAnimationFrame(type), speed);
+    }
+    requestAnimationFrame(type);
+  </script>
+
+
